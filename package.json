@@ -1,0 +1,23 @@
+{
+  "name": "static-site-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate to get started creating your Website using Jade template engine and Stylus CSS preprocessor",
+  "directories": {
+    "example": "example"
+  },
+  "keywords": [
+    "static",
+    "html",
+    "css",
+    "jade",
+    "stylus",
+    "grunt"
+  ],
+  "author": "Kay Wolter",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jade": "^0.14.1",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
