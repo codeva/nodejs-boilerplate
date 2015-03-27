@@ -5,4 +5,9 @@ block append content
     div( class="row" )
       div( class="col-lg-12" )
         h1( class="page-header" ) #{message}
-    
+    each section in sections
+      div( class="row" )
+        div( class="col-lg-12" )
+          if section.title
+            h2( class="page-header" ) #{section.title}
+          div !{section.content}

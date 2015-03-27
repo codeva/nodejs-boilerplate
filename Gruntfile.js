@@ -2,41 +2,39 @@ var Context = require( "./context" );
 
 module.exports = function( grunt ) {
   
-  var contextDirectory = "example/context";
-  var jadeFiles = { "example/site/index.html": [ "example/jade/index.jade" ] };
-  var stylusFiles = { "example/site/css/main.css": [ "example/stylus/main.styl" ] };
+  var configPath = grunt.option( "config" ) || "./config";
+  var config = require( configPath );
   
   grunt.initConfig({
     stylus: {
       compile: {
-        files: stylusFiles
+        files: config.stylusFiles
       }
     },
     jade: {
       production: {
         options: {
           data: function( dest, src ) {
-            return Context.read( dest, src, contextDirectory );
+            return Context.read( dest, src, config.contextRoot );
           }
         },
-        files: jadeFiles
+        files: config.jadeFiles
       },
       development: {
         options: {
           data: function( dest, src ) {
-            console.log( dest );
-            data = Context.read( dest, src, contextDirectory );
+            data = Context.read( dest, src, config.contextRoot );
             data.development = true;
             return data;
           },
           pretty: true
         },
-        files: jadeFiles
+        files: config.jadeFiles
       }
     },
     watch: {
       html: {
-        files: [ "**/*.jade", "**/*.js", "**/*.styl", "**/*.json" ],
+        files: [ "**/*.jade", "**/*.js", "**/*.styl", "**/*.json", "**/*.html" ],
         tasks: [ "stylus", "jade:development" ],
         options: {
           interrupt: true,
