@@ -9,6 +9,7 @@ Generate example site for production:
 git clone https://github.com/codeva/static-site-boilerplate.git
 cd https://github.com/codeva/static-site-boilerplate.git
 npm install
+bower install
 grunt
 ```
 Run watch with livereload for development:
