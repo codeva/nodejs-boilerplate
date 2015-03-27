@@ -1,0 +1,29 @@
+{
+  "name": "static-site-boilerplate",
+  "version": "1.0.0",
+  "homepage": "https://github.com/codeva/static-site-boilerplate",
+  "authors": [
+    "Kay Wolter <kay.wolter@codeva.de>"
+  ],
+  "description": "Boilerplate to get started creating your static web project using Jade template engine and Stylus CSS preprocessor",
+  "keywords": [
+    "static",
+    "html",
+    "css",
+    "jade",
+    "stylus",
+    "grunt"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "example/static/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4"
+  }
+}
