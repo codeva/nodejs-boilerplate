@@ -12,7 +12,7 @@ exports.read = function( dest, src, contextRootDirectory ) {
     function( section, cb ) {
       if ( section.path ){
         console.log( Path.join( contextRootDirectory, section.path ) );
-        section.content = Fs.readFileSync( Path.join( contextRootDirectory, section.path ) ); 
+        section.content = Fs.readFileSync( Path.join( contextRootDirectory, section.path ) );
       }
       cb();
     },

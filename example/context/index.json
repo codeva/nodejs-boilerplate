@@ -3,7 +3,7 @@
   "sections": [
     {
       "title": "Section",
-      "path": "sections/lorem.html"     
+      "path": "sections/lorem.section.html" 
     },
     {
       "title": "Another Section",

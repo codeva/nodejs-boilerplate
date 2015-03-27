@@ -34,7 +34,7 @@ module.exports = function( grunt ) {
     },
     watch: {
       html: {
-        files: [ "**/*.jade", "**/*.js", "**/*.styl", "**/*.json", "**/*.html" ],
+        files: [ "**/*.jade", "**/*.js", "**/*.styl", "**/*.json", "**/*.section.html" ],
         tasks: [ "stylus", "jade:development" ],
         options: {
           interrupt: true,
