@@ -11,4 +11,10 @@ cd https://github.com/codeva/static-site-boilerplate.git
 npm install
 grunt
 ```
+Run watch with livereload for development:
+```
+grunt watch
+```
+This will watch for file changes and reload the browser preview if anything changed. Please not that you need to access your html pages via a web server.
+
 Grunt installs the generated files to ```example/static```.

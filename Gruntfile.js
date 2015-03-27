@@ -13,16 +13,19 @@ module.exports = function( grunt ) {
       },
       development: {
         options: {
-          data: readContext,
-          pretty: true,
-          development: true
+          data: function( dest, src ) {
+            data = readContext( dest, src );
+            data.development = true;
+            return data;
+          },
+          pretty: true
         },
         files: jadeFiles
       }
     },
     watch: {
       html: {
-        files: [ "**/*.jade", "**/*.js", "**/*.css", "**/*.json", "sections/*" ],
+        files: [ "**/*.jade", "**/*.js", "**/*.css", "**/*.json" ],
         tasks: [ "jade:development" ],
         options: {
           interrupt: true,
