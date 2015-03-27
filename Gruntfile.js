@@ -1,6 +1,7 @@
 module.exports = function( grunt ) {
   
-  var jadeFiles = { "example/site/index.html": [ "example/templates/index.jade" ] };
+  var jadeFiles = { "example/site/index.html": [ "example/jade/index.jade" ] };
+  var stylusFiles = { "example/site/css/main.css": [ "example/stylus/main.styl" ] };
   var readContext = function( dest, src ) { return require( "./example/context.json" ); }
   
   grunt.initConfig({
@@ -23,10 +24,15 @@ module.exports = function( grunt ) {
         files: jadeFiles
       }
     },
+    stylus: {
+      compile: {
+        files: stylusFiles
+      }
+    },
     watch: {
       html: {
-        files: [ "**/*.jade", "**/*.js", "**/*.css", "**/*.json" ],
-        tasks: [ "jade:development" ],
+        files: [ "**/*.jade", "**/*.js", "**/*.styl", "**/*.json" ],
+        tasks: [ "jade:development", "stylus" ],
         options: {
           interrupt: true,
           livereload: true
@@ -36,7 +42,8 @@ module.exports = function( grunt ) {
   });
   
   grunt.loadNpmTasks( "grunt-contrib-jade" );
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.registerTask( "default", [ "jade:production" ] );
+  grunt.loadNpmTasks( "grunt-contrib-stylus" );
+  grunt.loadNpmTasks( "grunt-contrib-watch" );
+  grunt.registerTask( "default", [ "jade:production", "stylus" ] );
   
 }
