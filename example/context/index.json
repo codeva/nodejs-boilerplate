@@ -11,12 +11,24 @@
       "sections": [
         {
           "title": "Subsection 1",
-          "class": "col-lg-6",
-          "path": "sections/lorem.sub1.section.html"
+          "class": "col-lg-8",
+          "path": "sections/lorem.sub1.section.html",
+          "sections": [
+            {
+              "title": "Subsubsection 1",
+              "class": "col-lg-6",
+              "path": "sections/lorem.sub1.sub1.section.html"
+            },
+            {
+              "title": "Subsubsection 2",
+              "class": "col-lg-6",
+              "path": "sections/lorem.sub1.sub2.section.html"
+            }
+          ]
         },
         {
           "title": "Subsection 2",
-          "class": "col-lg-6",
+          "class": "col-lg-4",
           "path": "sections/lorem.sub2.section.html"
         }
       ]

@@ -1,5 +1,15 @@
 extends base
 
+mixin unrollSubsections( subsections )
+  div( class="row" )
+    each subsection in subsections
+      div( class=subsection.class )
+        if subsection.title
+          h3 #{subsection.title}
+        div !{subsection.content}
+        if subsection.sections
+          +unrollSubsections( subsection.sections )
+
 block append content
   div( class="container" )
     div( class="row" )
@@ -12,9 +22,4 @@ block append content
             h2 #{section.title}
           div !{section.content}
           if section.sections
-            div( class="row" )
-              each subsection in section.sections
-                div( class=subsection.class )
-                  if subsection.title
-                    h3 #{subsection.title}
-                  div !{subsection.content}
+            +unrollSubsections( section.sections )

@@ -16,7 +16,6 @@ var readContentFiles = function( elements, rootDirectory ) {
     elements,
     function( element, cb ) {
       if ( element.path ){
-        console.log( Path.join( rootDirectory, element.path ) );
         element.content = Fs.readFileSync( Path.join( rootDirectory, element.path ) );
       }
       if ( element.sections ) {
