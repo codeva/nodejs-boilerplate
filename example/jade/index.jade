@@ -9,5 +9,12 @@ block append content
       div( class="row" )
         div( class="col-lg-12" )
           if section.title
-            h2( class="page-header" ) #{section.title}
+            h2 #{section.title}
           div !{section.content}
+          if section.sections
+            div( class="row" )
+              each subsection in section.sections
+                div( class=subsection.class )
+                  if subsection.title
+                    h3 #{subsection.title}
+                  div !{subsection.content}

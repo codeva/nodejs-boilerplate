@@ -7,12 +7,20 @@ exports.read = function( dest, src, contextRootDirectory ) {
   baseName = baseName.substring( 0, baseName.lastIndexOf( "." ) ) || baseName;
   contextFile = "./" + Path.join( contextRootDirectory, baseName + ".json" );
   context = require( contextFile );
+  readContentFiles( context.sections, contextRootDirectory );
+  return context;
+};
+
+var readContentFiles = function( elements, rootDirectory ) {
   Async.eachSeries(
-    context.sections,
-    function( section, cb ) {
-      if ( section.path ){
-        console.log( Path.join( contextRootDirectory, section.path ) );
-        section.content = Fs.readFileSync( Path.join( contextRootDirectory, section.path ) );
+    elements,
+    function( element, cb ) {
+      if ( element.path ){
+        console.log( Path.join( rootDirectory, element.path ) );
+        element.content = Fs.readFileSync( Path.join( rootDirectory, element.path ) );
+      }
+      if ( element.sections ) {
+        readContentFiles( element.sections, rootDirectory );
       }
       cb();
     },
@@ -21,6 +29,5 @@ exports.read = function( dest, src, contextRootDirectory ) {
         throw new Error( err );
       }
     }
-  );
-  return context;
-};
+  );  
+}
