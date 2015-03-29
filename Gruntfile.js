@@ -1,9 +1,9 @@
-var Context = require( "./context" );
-
 module.exports = function( grunt ) {
   
   var configPath = grunt.option( "config" ) || "./config";
+  var jadeConfigPath = grunt.option( "jade-config" ) || "./jadeConfig";
   var config = require( configPath );
+  var jadeConfig = require( jadeConfigPath );
   
   grunt.initConfig({
     stylus: {
@@ -11,27 +11,7 @@ module.exports = function( grunt ) {
         files: config.stylusFiles
       }
     },
-    jade: {
-      production: {
-        options: {
-          data: function( dest, src ) {
-            return Context.read( dest, src, config.contextRoot );
-          }
-        },
-        files: config.jadeFiles
-      },
-      development: {
-        options: {
-          data: function( dest, src ) {
-            data = Context.read( dest, src, config.contextRoot );
-            data.development = true;
-            return data;
-          },
-          pretty: true
-        },
-        files: config.jadeFiles
-      }
-    },
+    jade: jadeConfig.createConfig( config.jadeFiles, config.contextRoot ),
     watch: {
       html: {
         files: [ "**/*.jade", "**/*.js", "**/*.styl", "**/*.json", "**/*.section.html" ],
