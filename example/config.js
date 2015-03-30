@@ -6,5 +6,8 @@ module.exports = {
   },
   stylusFiles: {
     "example/site/css/main.css": [ "example/stylus/main.styl" ]
+  },
+  jsFiles: {
+    "example/site/js/example.min.js": [ "example/js/example.js" ]
   }
 }

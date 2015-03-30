@@ -8,14 +8,25 @@ module.exports = function( grunt ) {
   grunt.initConfig({
     stylus: {
       compile: {
-        files: config.stylusFiles
+        files: config.stylusFiles 
       }
     },
     jade: jadeConfig.createConfig( config.jadeFiles, config.contextRoot ),
+    uglify: {
+      development: {
+        options: {
+          beautify: true
+        },
+        files: config.jsFiles
+      },
+      production: {
+        files: config.jsFiles 
+      }
+    },
     watch: {
       html: {
-        files: [ "**/*.jade", "**/*.js", "**/*.styl", "**/*.json", "**/*.section.html" ],
-        tasks: [ "stylus", "jade:development" ],
+        files: [ "**/*.jade", "**/*.js", "!**/*.min.js", "**/*.styl", "**/*.json", "**/*.section.html" ],
+        tasks: [ "stylus", "jade:development", "uglify:development" ],
         options: {
           interrupt: true,
           livereload: true
@@ -26,7 +37,8 @@ module.exports = function( grunt ) {
   
   grunt.loadNpmTasks( "grunt-contrib-jade" );
   grunt.loadNpmTasks( "grunt-contrib-stylus" );
+  grunt.loadNpmTasks( "grunt-contrib-uglify" );
   grunt.loadNpmTasks( "grunt-contrib-watch" );
-  grunt.registerTask( "default", [ "stylus", "jade:production" ] );
+  grunt.registerTask( "default", [ "stylus", "jade:production", "uglify:production" ] );
   
 }
