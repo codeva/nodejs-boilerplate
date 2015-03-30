@@ -12,11 +12,12 @@ module.exports = function( grunt ) {
   var tasksConfigPath = "./tasks/config/"
   var configFiles = Glob.sync( "*", { cwd: tasksConfigPath } );
   configFiles.forEach( function( configFile ) {
-    key = configFile.replace( /\.js$/, "" );
-    grunt.config( key, require( tasksConfigPath + configFile ) );
+    require( tasksConfigPath + configFile )( grunt )
   });
 
+  grunt.loadNpmTasks( "grunt-contrib-jade" );
   grunt.loadNpmTasks( "grunt-contrib-stylus" );
+  grunt.loadNpmTasks( "grunt-contrib-watch" );
   grunt.registerTask( "default", config.pkg.grunt.tasks.default );
   
 }
