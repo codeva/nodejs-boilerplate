@@ -8,7 +8,6 @@ module.exports = function( grunt ) {
   var tasksConfigPath = "tasks/config/"
   var configFiles = Glob.sync( "*", { cwd: Path.join( __dirname, tasksConfigPath ) } );
   configFiles.forEach( function( configFile ) {
-    console.log( configFile );
     require( "./" + tasksConfigPath + configFile )( grunt )
   });
 
