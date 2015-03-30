@@ -27,7 +27,7 @@ module.exports = function( grunt ) {
 var readContext = function( dest, src, contextRootDirectory ) {
   var baseName = dest.substring( dest.lastIndexOf( "/" ) + 1 ) || dest;
   baseName = baseName.substring( 0, baseName.lastIndexOf( "." ) ) || baseName;
-  context = require( Path.join( "../../", contextRootDirectory ) );
+  context = require( Path.join( process.cwd(), contextRootDirectory ) );
   if ( context.sections ) {
     readContentFiles( context.sections, contextRootDirectory ); 
   }
