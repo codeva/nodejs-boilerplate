@@ -7,7 +7,9 @@ exports.read = function( dest, src, contextRootDirectory ) {
   baseName = baseName.substring( 0, baseName.lastIndexOf( "." ) ) || baseName;
   contextFile = "./" + Path.join( contextRootDirectory, baseName + ".json" );
   context = require( contextFile );
-  readContentFiles( context.sections, contextRootDirectory );
+  if ( context.sections ) {
+    readContentFiles( context.sections, contextRootDirectory ); 
+  }
   return context;
 };
 
