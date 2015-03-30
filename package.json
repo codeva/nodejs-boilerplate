@@ -1,10 +1,7 @@
 {
-  "name": "static-site-boilerplate",
+  "name": "static-site-boilerplate-example",
   "version": "1.0.0",
   "description": "Boilerplate to get started creating your Website using Jade template engine and Stylus CSS preprocessor",
-  "directories": {
-    "example": "example"
-  },
   "keywords": [
     "static",
     "html",
@@ -17,6 +14,7 @@
   "license": "MIT",
   "devDependencies": {
     "async": "^0.9.0",
+    "glob": "^5.0.3",
     "grunt": "^0.4.5",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-jade": "^0.14.1",
@@ -24,5 +22,15 @@
     "grunt-contrib-uglify": "^0.8.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-newer": "^1.1.0"
+  },
+  "grunt": {
+    "tasks": {
+      "stylus": {
+        "files": {
+          "example/site/css/main.css": [ "example/stylus/main.styl" ]
+        }
+      },
+      "default": [ "stylus" ]
+    }
   }
 }
