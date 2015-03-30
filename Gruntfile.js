@@ -17,6 +17,9 @@ module.exports = function( grunt ) {
 
   grunt.loadNpmTasks( "grunt-contrib-jade" );
   grunt.loadNpmTasks( "grunt-contrib-stylus" );
+  grunt.loadNpmTasks( "grunt-contrib-uglify" );
+  grunt.loadNpmTasks( "grunt-contrib-copy" );
+  grunt.loadNpmTasks( "grunt-newer" );
   grunt.loadNpmTasks( "grunt-contrib-watch" );
   grunt.registerTask( "default", config.pkg.grunt.tasks.default );
   

@@ -38,7 +38,21 @@
           }
         }
       },
-      "default": [ "stylus", "jade" ]
+      "uglify": {
+        "files": {
+          "example/site/js/example.min.js": [ "example/js/example.js" ]
+        }
+      },
+      "copy": {
+        "files": {
+          "expand": "true",
+          "cwd": "example/img/",
+          "src": "**",
+          "dest": "example/site/img/",
+          "filter": "isFile"
+        }
+      },
+      "default": [ "stylus", "jade", "uglify", "newer:copy" ]
     }
   }
 }

@@ -10,11 +10,11 @@ git clone https://github.com/codeva/static-site-boilerplate.git
 cd https://github.com/codeva/static-site-boilerplate.git
 npm install
 bower install
-grunt --config=./example/config.js
+grunt
 ```
 Run watch with livereload for development:
 ```
-grunt watch --config=./example/config.js
+grunt watch --env=development
 ```
 This will watch for file changes and reload the browser preview if anything changed. Please not that you need to access your html pages via a web server.
 

@@ -13,7 +13,7 @@ module.exports = function( grunt ) {
           data: function( dest, src ) {
             data = readContext( dest, src, grunt.config( "pkg" ).grunt.tasks.jade.context.root );
             if ( isDevelopment === true ) {
-              data.development = true; 
+              data.development = true;
             }
             return data;
           },
