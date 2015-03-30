@@ -11,7 +11,10 @@ module.exports = {
     "example/site/js/example.min.js": [ "example/js/example.js" ]
   },
   copyFiles: {
-    src: [ "example/img/*.jpg", "example/img/*.png" ],
-    dest: "example/site/img/"
+    expand: true,
+    cwd: 'example/img/',
+    src: '**',
+    dest: 'example/site/img/',
+    filter: 'isFile'
   }
 }
