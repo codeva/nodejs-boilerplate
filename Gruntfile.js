@@ -23,10 +23,13 @@ module.exports = function( grunt ) {
         files: config.jsFiles 
       }
     },
+    copy: {
+      main: config.copyFiles
+    },
     watch: {
       html: {
         files: [ "**/*.jade", "**/*.js", "!**/*.min.js", "**/*.styl", "**/*.json", "**/*.section.html" ],
-        tasks: [ "stylus", "jade:development", "uglify:development" ],
+        tasks: [ "stylus", "jade:development", "newer:uglify:development", "newer:copy" ],
         options: {
           interrupt: true,
           livereload: true
@@ -38,7 +41,9 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks( "grunt-contrib-jade" );
   grunt.loadNpmTasks( "grunt-contrib-stylus" );
   grunt.loadNpmTasks( "grunt-contrib-uglify" );
+  grunt.loadNpmTasks( "grunt-contrib-copy" );
+  grunt.loadNpmTasks( "grunt-newer" );
   grunt.loadNpmTasks( "grunt-contrib-watch" );
-  grunt.registerTask( "default", [ "stylus", "jade:production", "uglify:production" ] );
+  grunt.registerTask( "default", [ "stylus", "jade:production", "uglify:production", "copy" ] );
   
 }
