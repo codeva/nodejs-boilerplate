@@ -18,14 +18,12 @@ module.exports = function( grunt ) {
       }
     }
   }
-  console.log( jadeConfig );
   grunt.config( "jade", jadeConfig );
 }
 
 var readContext = function( contextRootDirectory, isDevelopment, dest, src ) {
   var baseName = dest.substring( dest.lastIndexOf( "/" ) + 1 ) || dest;
   baseName = baseName.substring( 0, baseName.lastIndexOf( "." ) ) || baseName;
-  console.log( process.cwd(), contextRootDirectory )
   context = require( Path.join( process.cwd(), contextRootDirectory ) );
   if ( context.sections ) {
     readContentFiles( context.sections, contextRootDirectory ); 
