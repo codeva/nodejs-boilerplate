@@ -31,12 +31,29 @@
         }
       },
       "jade": {
-        "context": {
-          "root": "example/context",
-          "files": {
-            "example/site/index.html": [ "example/jade/index.jade" ]
+        "context": [
+          {
+            "name": "redirect",
+            "root": "example/context/redirect",
+            "files": {
+              "example/site/index.html": [ "jade/redirect.jade" ]
+            }
+          },
+          {
+            "name": "en",
+            "root": "example/context/en",
+            "files": {
+              "example/site/en/index.html": [ "example/jade/index.jade" ]
+            }
+          },
+          {
+            "name": "de",
+            "root": "example/context/de",
+            "files": {
+              "example/site/de/index.html": [ "example/jade/index.jade" ]
+            }
           }
-        }
+        ]
       },
       "uglify": {
         "files": {

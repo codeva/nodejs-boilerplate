@@ -1,0 +1,37 @@
+{
+  "message": "Hallo Welt!",
+  "sections": [
+    {
+      "title": "Absatz",
+      "path": "sections/lorem.section.html" 
+    },
+    {
+      "title": "Noch ein Absatz",
+      "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+      "sections": [
+        {
+          "title": "Unterabschnitt 1",
+          "class": "col-lg-8",
+          "path": "sections/lorem.sub1.section.html",
+          "sections": [
+            {
+              "title": "Unterunterabschnitt 1",
+              "class": "col-lg-6",
+              "path": "sections/lorem.sub1.sub1.section.html"
+            },
+            {
+              "title": "Unterunterabschnitt 2",
+              "class": "col-lg-6",
+              "path": "sections/lorem.sub1.sub2.section.html"
+            }
+          ]
+        },
+        {
+          "title": "Unterabschnitt 2",
+          "class": "col-lg-4",
+          "path": "sections/lorem.sub2.section.html"
+        }
+      ]
+    }
+  ]
+}

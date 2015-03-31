@@ -1,0 +1,20 @@
+doctype html
+html(lang=en)
+  header
+    title #{title}
+    script( type="text/javascript" ).
+      var userLang = navigator.language || navigator.userLanguage;
+      var languageCodes = "#{redirectLanguageCodes}";
+      languageCodes = languageCodes.split( "," );
+      var isRedirected = false;
+      for ( var i = 0; i < languageCodes.length; ++i ) {
+        if ( languageCodes[ i ] === userLang.substring( 0, 2 ) ) {
+          window.location.href = languageCodes[ i ];
+          isRedirected = true;
+        }
+      }
+      if ( !isRedirected )
+      {
+        window.location.href = "#{redirectDefaultLanguageCode}";
+      }
+  body

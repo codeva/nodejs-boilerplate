@@ -4,32 +4,34 @@ var Async = require( "async" );
 
 module.exports = function( grunt ) {
   var isDevelopment = grunt.config( "env" ) === "development";
-  grunt.config(
-    "jade",
-    {
-      compile: {
-        files: "<%= pkg.grunt.tasks.jade.context.files %>",
-        options: {
-          data: function( dest, src ) {
-            data = readContext( dest, src, grunt.config( "pkg" ).grunt.tasks.jade.context.root );
-            if ( isDevelopment === true ) {
-              data.development = true;
-            }
-            return data;
-          },
-          pretty: isDevelopment
-        }
+  
+  jadeConfig = {};
+  for ( var i = 0; i < grunt.config( "pkg" ).grunt.tasks.jade.context.length; ++i ) {
+    context = grunt.config( "pkg" ).grunt.tasks.jade.context[ i ];
+    contextRoot = context.root;
+    var dataFunction = readContext.bind( null, contextRoot, isDevelopment );
+    jadeConfig[ context.name ] = {
+      files: context.files,
+      options: {
+        data: dataFunction,
+        pretty: isDevelopment
       }
     }
-  );
+  }
+  console.log( jadeConfig );
+  grunt.config( "jade", jadeConfig );
 }
 
-var readContext = function( dest, src, contextRootDirectory ) {
+var readContext = function( contextRootDirectory, isDevelopment, dest, src ) {
   var baseName = dest.substring( dest.lastIndexOf( "/" ) + 1 ) || dest;
   baseName = baseName.substring( 0, baseName.lastIndexOf( "." ) ) || baseName;
+  console.log( process.cwd(), contextRootDirectory )
   context = require( Path.join( process.cwd(), contextRootDirectory ) );
   if ( context.sections ) {
     readContentFiles( context.sections, contextRootDirectory ); 
+  }
+  if ( isDevelopment === true ) {
+    context.development = true;
   }
   return context;
 };
