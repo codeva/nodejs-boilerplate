@@ -5,7 +5,10 @@ form.controller( "FormCtrl", function ( $scope, $http ){
   this.isError = false;
   this.fields = {};
 
-  this.sendForm = function(){
+  this.sendForm = function( mailerUrl ){
+    if ( !mailerUrl ){
+      mailerUrl = "php/formMailer.php";
+    }
     var thisCtrl = this;
     requestData = {
       senderEmail: this.fields.email,
@@ -18,7 +21,7 @@ form.controller( "FormCtrl", function ( $scope, $http ){
       requestData.senderPhone = this.fields.phone;
     }
     
-    $http.post('php/formMailer.php', requestData).
+    $http.post( mailerUrl, requestData).
     success( function( data, status, headers, config ){
       console.log( "STATUS:", status );
       thisCtrl.onSuccess();

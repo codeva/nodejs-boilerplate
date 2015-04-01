@@ -1,5 +1,5 @@
 div( ng-app="form" )
-  form( ng-controller="FormCtrl as formCtrl", ng-submit="formCtrl.sendForm()", name="contactForm", id="contactForm", novalidate )
+  form( ng-controller="FormCtrl as formCtrl", ng-submit="formCtrl.sendForm( '#{contact.form.mailerUrl}' )", name="contactForm", id="contactForm", novalidate )
     div( ng-hide="formCtrl.isFormSent" )
       div( class="form-group")
         label( class="optional", for="senderName" ) #{contact.form.nameLabel}
