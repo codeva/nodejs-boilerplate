@@ -1,0 +1,37 @@
+| <?php
+|   $mailTo = "#{mailto}";
+|   $mailSubject = "#{subject}";
+|   $entityBody = file_get_contents( "php://input" );
+|   $paramsArray = json_decode( $entityBody, true );
+|   $mailFrom = $paramsArray[ 'senderEmail' ];
+|   $mailText = $paramsArray[ "senderMessage" ];
+|   if ( isset($paramsArray[ "senderName" ]) && strlen(trim( $paramsArray[ "senderName" ] )) > 0 )
+|   {
+|     $mailFrom = '"' . $paramsArray[ "senderName" ] . '" <' . $mailFrom . ">";
+|   }
+|   if ( isset($paramsArray[ "senderPhone" ]) && strlen(trim( $paramsArray[ "senderPhone" ] )) > 0 )
+|   {
+|     $mailText .= "\n\n=========================\nTelefon: " . $paramsArray[ "senderPhone" ];
+|   }
+|   if( get_magic_quotes_gpc() )
+|   {
+|     $mailText = stripslashes( $mailText );
+|   }
+|   $headers   = array();
+|   $headers[] = "MIME-Version: 1.0";
+|   $headers[] = "Content-type: text/plain; charset=utf-8";
+|   $headers[] = "From: {$mailFrom}";
+|   $headers[] = "Reply-To: {$mailFrom}";
+|   $headers[] = "Subject: {$mailSubject}";
+|   $headers[] = "X-Mailer: PHP/".phpversion();
+|   $mailSent = @mail( $mailTo, $mailSubject, $mailText, implode( "\r\n", $headers ) );
+|   if( $mailSent == TRUE )
+|   {
+|     header( "Status: 201 Email sent successfully" );
+|   }
+|   else
+|   {
+|     header( "Status: 400 Sending Email failed" );
+|   }
+|   exit();
+| ?>
