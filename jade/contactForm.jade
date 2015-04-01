@@ -2,20 +2,20 @@ div( ng-app="form" )
   form( ng-controller="FormCtrl as formCtrl", ng-submit="formCtrl.sendForm()", name="contactForm", id="contactForm", novalidate )
     div( ng-hide="formCtrl.isFormSent" )
       div( class="form-group")
-        label( class="optional", for="senderName" ) Name
+        label( class="optional", for="senderName" ) #{contact.form.nameLabel}
         input( ng-model="formCtrl.fields.name", type="text", class="form-control", id="senderName", name="senderName", placeholder="" )
       div( class="form-group")
-        label( class="optional", for="senderPhone" ) Telefonnummer
+        label( class="optional", for="senderPhone" ) #{contact.form.phoneLabel}
         input( ng-model="formCtrl.fields.phone", type="text", class="form-control", id="senderPhone", name="senderPhone", placeholder="" )
       div( class="form-group")
-        label( for="senderEmail" ) Email Adresse*
+        label( for="senderEmail" ) #{contact.form.emailLabel}*
         input( ng-model="formCtrl.fields.email", type="email", class="form-control", id="senderEmail", name="senderEmail", placeholder="", required )
       div( class="form-group")
-        label( for="senderMessage" ) Anliegen*
+        label( for="senderMessage" ) #{contact.form.requestLabel}*
         textarea( ng-model="formCtrl.fields.text", rows="5", class="form-control", id="senderMessage", name="senderMessage", required )
       div( ng-show="formCtrl.isError", class="submit-failure" )
-        p #{contact.sendFormFailureMessage}
-      button( type="submit", class="btn btn-lg btn-primary", ng-disabled!="contactForm.$invalid" ) Anfrage senden
+        p #{contact.form.sendFormFailureMessage}
+      button( type="submit", class="btn btn-lg btn-primary", ng-disabled!="contactForm.$invalid" ) #{contact.form.submitButtonText}
     
     div( ng-show="formCtrl.isFormSent", class="submit-success" )
-      p #{contact.sendFormSuccessMessage}
+      p #{contact.form.sendFormSuccessMessage}
