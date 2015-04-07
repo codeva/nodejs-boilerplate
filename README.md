@@ -1,6 +1,6 @@
-# static-site-boilerplate
+# nodejs-boilerplate
 
-Boilerplate to get started creating your static web project using Jade template engine and Stylus CSS preprocessor.
+Boilerplate to get started creating your Node.js web project.
 
 ## Usage
 
