@@ -3,7 +3,15 @@ module.exports = function( grunt ) {
     "watch",
     {
       html: {
-        files: [ "**/*.jade", "**/*.js", "!**/*.min.js", "**/*.styl", "**/*.json", "**/*.section.html" ],
+        files: [
+          "**/*.jade",
+          "**/*.js",
+          "!**/*.min.js",
+          "**/*.styl",
+          "**/*.json",
+          "!**/test/*json",
+          "**/*.section.html"
+        ],
         tasks: [ "default" ],
         options: {
           interrupt: true,
