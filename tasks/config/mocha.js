@@ -4,7 +4,7 @@ module.exports = function( grunt ) {
       test: {
         options: {
           reporter: "spec",
-          quiet: true
+          quiet: false
         },
         src: "<%= pkg.grunt.tasks.mocha.src %>"
       }
