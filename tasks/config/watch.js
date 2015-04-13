@@ -4,6 +4,7 @@ module.exports = function( grunt ) {
     {
       html: {
         files: [
+          ".rebooted",
           "**/*.jade",
           "**/*.js",
           "!**/*.min.js",
