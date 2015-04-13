@@ -3,11 +3,12 @@ module.exports = function( grunt ) {
   grunt.config(
 	  "nodemon", {
 		  dev: {
-		    script: 'index.js',
+		    script: "index.js",
 		    options: {
 		      env: {
 		        NODE_ENV: "development"
 		      },
+		      ignore: "<%= pkg.grunt.tasks.nodemon.ignore %>",
 		      // omit this property if you aren't serving HTML files and 
 		      // don't want to open a browser tab on start
 		      callback: function (nodemon) {
