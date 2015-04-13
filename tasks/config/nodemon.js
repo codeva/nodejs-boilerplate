@@ -9,6 +9,7 @@ module.exports = function( grunt ) {
 		        NODE_ENV: "development"
 		      },
 		      ignore: "<%= pkg.grunt.tasks.nodemon.ignore %>",
+		      watch: [ "*.js", "*.jade", "*.json" ],
 		      // omit this property if you aren't serving HTML files and 
 		      // don't want to open a browser tab on start
 		      callback: function (nodemon) {
