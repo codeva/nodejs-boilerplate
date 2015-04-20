@@ -6,8 +6,8 @@ Boilerplate to get started creating your Node.js web project.
 
 Generate example site for production:
 ```
-git clone https://github.com/codeva/static-site-boilerplate.git
-cd static-site-boilerplate/
+git clone https://github.com/codeva/nodejs-boilerplate.git
+cd nodejs-boilerplate/
 npm install
 bower install
 grunt
