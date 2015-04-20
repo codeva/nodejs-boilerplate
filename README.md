@@ -18,4 +18,4 @@ grunt watch --env=development
 ```
 This will watch for file changes and reload the browser preview if anything changed. Please not that you need to access your html pages via a web server.
 
-Grunt installs the generated files to ```example/static```.
+Grunt installs the generated files to ```example/site```.
